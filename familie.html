@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Business Dining — Chef</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <header class="site-header">
+    <a href="index.html" class="header-brand">The Cook</a>
+    <nav class="nav container">
+      <a href="index.html" data-i18n="nav-home">Home</a>
+      <a href="about.html" data-i18n="nav-about">Over mij</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn active" data-i18n="nav-dinners">Dinners <span class="dropdown-arrow">▼</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="Familie.html" class="active" data-i18n="nav-business">Business Dining</a>
+          <a href="familie.html" data-i18n="nav-homecooking">Home Cooking</a>
+          <a href="thema.html" data-i18n="nav-celebrations">Celebrations</a>
+          <a href="walking.html" data-i18n="nav-walking">Walking Dinner</a>
+          <a href="wijn.html" data-i18n="nav-cooking">Cooking Experiences</a>
+
+        </div>
+      </div>
+      <a href="request.html" data-i18n="nav-request">Aanvragen</a>
+      <div class="lang-switch" onclick="toggleLang()">
+        <span class="ls-nl ls-active">NL</span>
+        <span class="ls-en">EN</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="zak-main">
+
+    <!-- Titel -->
+    <section class="zak-intro container">
+      <p class="about-eyebrow" data-i18n="fam-eyebrow">Voor bedrijven en Familiee klanten</p>
+      <h1 class="zak-title" data-i18n="fam-title">Business Dining</h1>
+      <div class="about-divider" style="margin:1rem auto 1.5rem"></div>
+      <p class="zak-lead" data-i18n="fam-lead">
+        Familie dineren krijgt een nieuwe dimensie wanneer het plaatsvindt in uw eigen omgeving.
+      </p>
+    </section>
+
+    <!-- Rij 1: tekst links, foto rechts -->
+    <section class="zak-split container">
+      <div class="zak-split-row">
+        <div class="zak-split-text">
+          <p class="about-bio" data-i18n="fam-bio-1">
+            TheCook.nu verzorgt verfijnde diners en lunches voor Familiee gelegenheden,
+            waarbij kwaliteit, discretie en volledige ontzorging centraal staan. Van intieme
+            diners met relaties tot grotere settings met collega's waar ook walking dinners
+            tot de mogelijkheden behoort — wij creëren een professionele, maar ontspannen
+            sfeer waarin ruimte is voor goed gesprek en verbinding.
+          </p>
+        </div>
+        <div class="zak-split-img">
+          <img class="zak-dish-photo" src="images/a1.jpeg" alt="Gerecht">
+        </div>
+      </div>
+    </section>
+
+    <!-- Rij 2: foto links, tekst rechts -->
+    <section class="zak-split container">
+      <div class="zak-split-row">
+        <div class="zak-split-img">
+          <img class="zak-dish-photo" src="images/a2.jpeg" alt="Gerecht">
+        </div>
+        <div class="zak-split-text">
+                   <p class="about-bio" data-i18n="fam-bio-2">
+            Wij begrijpen dat Familiee bijeenkomsten vaak vragen om een strakke planning
+            en specifieke wensen. Daarom stemmen wij onze service nauwkeurig af op uw
+            programma en houden wij rekening met dieetwensen, allergieën en persoonlijke
+            voorkeuren.
+          </p>
+          <p class="about-bio" data-i18n="fam-bio-3">
+            Met zorgvuldig geselecteerde producten en een persoonlijke benadering
+            brengen wij restaurantniveau naar uw tafel.
+          </p>
+          <p class="zak-tagline" data-i18n="fam-tagline">Representatief, flexibel en tot in detail verzorgd.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rij 3: wijn arrangement -->
+    <section class="zak-split container">
+      <div class="zak-split-row">
+        <div class="zak-split-text">
+          <h2 class="zak-section-title" data-i18n="wine-title">Wijn Arrangement</h2>
+          <h3 class="zak-section-title" style="font-size:1.1rem;margin-top:0">Wijn per fles</h3>
+          <p class="about-bio">
+            De wijnen worden geleverd per fles, waarbij de prijs bestaat uit de
+            inkoopsprijs plus een vast kurkengeld per fles, met een vooraf
+            afgesproken maximale inkoopprijs.
+          </p>
+          <p class="about-bio">
+            Het kurkengeld dekt mijn werkzaamheden zoals research, inkoop en het
+            dragen van het inkooprisico. Je betaalt uitsluitend voor de flessen die
+            daadwerkelijk worden geopend en geserveerd.
+          </p>
+          <h3 class="zak-section-title" style="font-size:1.1rem">Wijnarrangement per glas</h3>
+          <p class="about-bio">
+            Daarnaast kan ik een bijpassend wijnarrangement per gang verzorgen,
+            waarbij elke gang wordt begeleid door een zorgvuldig geselecteerd glas
+            wijn. Dit zorgt voor een complete en verfijnde smaakbeleving, vergelijkbaar
+            met een restaurantervaring.
+          </p>
+        </div>
+        <div class="zak-split-img">
+          <img class="zak-dish-photo" src="images/w2.jpg" alt="Wijn arrangement">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="zak-cta container">
+      <a class="btn-about" href="request.html" data-i18n="fam-btn">Aanvragen</a>
+    </section>
+
+  </main>
+  <script src="lang.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Over ons — Chef</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <header class="site-header">
+    <a href="index.html" class="header-brand">The Cook</a>
+    <nav class="nav container">
+      <a href="index.html" data-i18n="nav-home">Home</a>
+      <a href="about.html" class="active" data-i18n="nav-about">Over mij</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" data-i18n="nav-dinners">Dinners <span class="dropdown-arrow">▼</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="zakelijk.html" data-i18n="nav-business">Business Dining</a>
+          <a href="familie.html" data-i18n="nav-homecooking">Home Cooking</a>
+          <a href="thema.html" data-i18n="nav-celebrations">Celebrations</a>
+          <a href="walking.html" data-i18n="nav-walking">Walking Dinner</a>
+          <a href="wijn.html" data-i18n="nav-cooking">Cooking Experiences</a>
+        </div>
+      </div>
+      <a href="request.html" data-i18n="nav-request">Aanvragen</a>
+      <div class="lang-switch" onclick="toggleLang()">
+        <span class="ls-nl ls-active">NL</span>
+        <span class="ls-en">EN</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="about-main container">
+
+    <!-- 1. WELKOM -->
+    <div class="about-card">
+      <div class="about-photo-col">
+        <div class="about-photo-wrap">
+          <img src="images/kok-die-in-de-keuken-kookt-in-professionele-kleding_23-2151208288.avif" alt="Foto van de chef" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="about-photo-placeholder">
+            <span class="photo-icon">📷</span>
+            <span>Voeg hier<br>jouw foto toe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text-col">
+        <p class="about-eyebrow" data-i18n="about-welcome">Welkom bij TheCook.nu</p>
+        <h1 class="about-name">Monique Varossieau</h1>
+        <div class="about-divider"></div>
+        <p class="about-bio" data-i18n="about-intro-1">
+          TheCook.nu – fine catering &amp; dining – is ontstaan vanuit de wens om
+          culinair te genieten in een intieme, vertrouwde omgeving, zonder de gang
+          naar een restaurant.
+        </p>
+        <p class="about-bio" data-i18n="about-intro-2">
+          Wat begon binnen ons eigen netwerk van vrienden en zakenrelaties, is
+          uitgegroeid tot een totaalconcept dat perfect aansluit op deze behoefte.
+          Wij combineren de warmte van de thuissfeer met culinaire verfijning,
+          hoogwaardige service en het volledig ontzorgen van onze gasten.
+        </p>
+        <p class="about-bio" data-i18n="about-intro-3">
+          Zo ontstaat er ruimte om écht te genieten — als gast én als gastheer of gastvrouw.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. VERHAAL -->
+    <div class="about-story">
+      <div class="about-story-inner">
+        <p class="about-eyebrow" data-i18n="about-exp-eyebrow">De ervaring</p>
+        <h2 class="about-story-title" data-i18n="about-exp-title">Dineren in uw eigen restaurant</h2>
+        <div class="about-divider"></div>
+        <p class="about-bio" data-i18n="about-exp-bio-1">
+          Of het nu gaat om een formeel zakelijk diner of een informele gelegenheid:
+          dineren in uw eigen "restaurant" blijkt keer op keer een bijzondere en
+          gewaardeerde ervaring. Het creëert een ontspannen setting waarin gesprekken
+          vanzelf op gang komen en verbinding centraal staat.
+        </p>
+        <p class="about-bio" data-i18n="about-exp-bio-2">
+          Van een zakelijk diner tot een jubileum, zoals een 50-jarig huwelijk met
+          familie en vrienden of een ladies lunch bij een verjaring — wij verzorgen de
+          complete culinaire invulling, zodat u zich nergens zorgen over hoeft te maken.
+          Geen planning, geen afwas, alleen genieten van het moment.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. TOT SLOT -->
+    <div class="about-diff">
+      <p class="about-eyebrow" style="text-align:center" data-i18n="about-final-eyebrow">Tot slot</p>
+      <div class="about-divider" style="margin:1rem auto 2rem"></div>
+      <div class="about-story-inner">
+        <p class="about-bio" data-i18n="about-final-bio-1">
+          Door goed te luisteren en ons te verdiepen in uw wensen, creëren wij een
+          ervaring die volledig op maat is.
+        </p>
+        <p class="about-bio" data-i18n="about-final-bio-2">
+          Klein of groot, zakelijk of privé, ingetogen of feestelijk — elk event is uniek.
+          Wij maken graag een persoonlijk voorstel voor u.
+        </p>
+        <p class="about-bio" data-i18n="about-final-bio-3">
+          Naast TheCook.nu werk ik als professioneel Chef en word ik regelmatig
+          ingehuurd door bedrijven waaronder gerenommeerde restaurants. Deze
+          ervaring vertaalt zich naar een hoog culinair niveau, waarbij kwaliteit,
+          techniek en presentatie centraal staan.
+        </p>
+        <p class="zak-tagline" data-i18n="about-tagline">Mijn naam is Monique Varossieau – uw private Chef.</p>
+      </div>
+    </div>
+
+    <!-- BounceCards -->
+    <div id="bounceCardsContainer" class="bounceCardsContainer"></div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:1rem 0 3rem">
+      <a class="btn-about" href="request.html" data-i18n="about-cta">Maak een aanvraag</a>
+    </div>
+
+  </main>
+
+
+
+  <script src="lang.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    const images = [
+      "images/a7.jpeg",
+      "images/a18.jpeg",
+      "images/a8.jpeg",
+      "images/a20.jpg",
+      "images/a21.png"
+    ];
+
+    const transformStyles = [
+      "rotate(5deg) translate(-150px)",
+      "rotate(0deg) translate(-70px)",
+      "rotate(-5deg)",
+      "rotate(5deg) translate(70px)",
+      "rotate(-5deg) translate(150px)"
+    ];
+
+    const containerWidth  = 500;
+    const containerHeight = 250;
+    const animationDelay  = 1;
+    const animationStagger = 0.08;
+    const easeType        = "elastic.out(1, 0.5)";
+    const enableHover     = true;
+
+    function getNoRotationTransform(t) {
+      if (/rotate\([\s\S]*?\)/.test(t))
+        return t.replace(/rotate\([\s\S]*?\)/, 'rotate(0deg)');
+      return t === 'none' ? 'rotate(0deg)' : t + ' rotate(0deg)';
+    }
+
+    function getPushedTransform(base, offsetX) {
+      const m = base.match(/translate\(([-0-9.]+)px\)/);
+      if (m) {
+        const newX = parseFloat(m[1]) + offsetX;
+        return base.replace(/translate\(([-0-9.]+)px\)/, `translate(${newX}px)`);
+      }
+      return base === 'none' ? `translate(${offsetX}px)` : `${base} translate(${offsetX}px)`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('bounceCardsContainer');
+      container.style.width  = containerWidth  + 'px';
+      container.style.height = containerHeight + 'px';
+
+      const cards = [];
+
+      images.forEach((src, idx) => {
+        const card = document.createElement('div');
+        card.className = `card card-${idx}`;
+        card.style.transform = transformStyles[idx] || 'none';
+
+        const img = document.createElement('img');
+        img.className = 'image';
+        img.src = src;
+        img.alt = `card-${idx}`;
+
+        card.appendChild(img);
+        container.appendChild(card);
+        cards.push(card);
+      });
+
+      gsap.fromTo(cards, { scale: 0 }, {
+        scale: 1,
+        stagger: animationStagger,
+        ease: easeType,
+        delay: animationDelay
+      });
+
+      if (enableHover) {
+        cards.forEach((card, hoveredIdx) => {
+          card.addEventListener('mouseenter', () => {
+            cards.forEach((c, i) => {
+              gsap.killTweensOf(c);
+              const base = transformStyles[i] || 'none';
+              if (i === hoveredIdx) {
+                gsap.to(c, { transform: getNoRotationTransform(base), duration: 0.4, ease: 'back.out(1.4)', overwrite: 'auto' });
+              } else {
+                const offsetX = i < hoveredIdx ? -160 : 160;
+                const delay   = Math.abs(hoveredIdx - i) * 0.05;
+                gsap.to(c, { transform: getPushedTransform(base, offsetX), duration: 0.4, ease: 'back.out(1.4)', delay, overwrite: 'auto' });
+              }
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            cards.forEach((c, i) => {
+              gsap.killTweensOf(c);
+              gsap.to(c, { transform: transformStyles[i] || 'none', duration: 0.4, ease: 'back.out(1.4)', overwrite: 'auto' });
+            });
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

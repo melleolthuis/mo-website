@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aanvragen — The Cook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Wit · Zwart · Goud thema voor aanvraag pagina ── */
+    body.request-dark {
+      background: #ffffff;
+      color: #111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body.request-dark .request-page { flex: 1; }
+
+    .request-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 48px rgba(0,0,0,0.13);
+      overflow: hidden;
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid #e8e0cc;
+    }
+
+    body.request-dark .request-card-header {
+      background: url('images/achtergrond balk.png') center/cover no-repeat !important;
+      color: #fff;
+      padding: 2.4rem 2.5rem 2rem;
+      text-align: center;
+      border-bottom: 3px solid #d4af37;
+    }
+    .request-card-icon { font-size: 2.4rem; margin-bottom: .6rem; }
+    .request-card-header h1 {
+      margin: 0 0 .4rem;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #ffffff !important;
+      letter-spacing: .03em;
+    }
+    .request-card-header p {
+      margin: 0;
+      color: rgba(255,255,255,0.75) !important;
+      font-size: .93rem;
+    }
+
+    /* ── Dienst-kaartjes ── */
+    .service-picker {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: .75rem;
+      margin-bottom: 1.4rem;
+    }
+    .service-picker input[type="radio"] { display: none; }
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      padding: .9rem .6rem;
+      border: 1.5px solid #ddd;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      background: #fafafa;
+    }
+    .service-card:hover {
+      border-color: #d4af37;
+      background: #fffbf0;
+    }
+    .service-picker input[type="radio"]:checked + .service-card {
+      border-color: #d4af37;
+      background: #111;
+      box-shadow: 0 0 0 2px #d4af37;
+    }
+    .service-picker input[type="radio"]:checked + .service-card .sc-icon,
+    .service-picker input[type="radio"]:checked + .service-card .sc-name {
+      color: #d4af37;
+    }
+    .sc-icon { font-size: 1.6rem; line-height: 1; }
+    .sc-name {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    /* ── Formulier ── */
+    .request-form { padding: 2rem 2.5rem; }
+    .form-section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #d4af37;
+      margin: 1.4rem 0 .8rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .form-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(212,175,55,0.25);
+    }
+
+    .form-group { display: flex; flex-direction: column; margin-bottom: .65rem; }
+    .form-group label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: .35rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: .7rem .9rem;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: .97rem;
+      font-family: inherit;
+      background: #fff;
+      color: #111;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #aaa; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .9rem center;
+      background-size: 10px;
+      padding-right: 2.4rem;
+    }
+    .required { color: #d4af37; }
+
+    .btn-submit {
+      width: 100%;
+      padding: .95rem;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: .8rem;
+      background: #111;
+      color: #d4af37;
+      transition: background .2s, transform .12s, box-shadow .2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .btn-submit:hover {
+      background: #d4af37;
+      color: #111;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+    }
+    .btn-submit:active { transform: translateY(0); }
+
+    .message { margin-top: 1rem; color: #c9a84c; font-size: .9rem; }
+
+    @media(max-width:600px){
+      .request-card-header { padding: 1.6rem 1.25rem 1.4rem; }
+      .request-form { padding: 1.5rem 1.25rem; }
+      .service-picker { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body class="request-dark">
+  <header class="site-header">
+    <a href="index.html" class="header-brand">The Cook</a>
+    <nav class="nav container">
+      <a href="index.html" data-i18n="nav-home">Home</a>
+      <a href="about.html" data-i18n="nav-about">Over mij</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" data-i18n="nav-dinners">Dinners <span class="dropdown-arrow">▼</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="zakelijk.html" data-i18n="nav-business">Business Dining</a>
+          <a href="familie.html" data-i18n="nav-homecooking">Home Cooking</a>
+          <a href="thema.html" data-i18n="nav-celebrations">Celebrations</a>
+          <a href="walking.html" data-i18n="nav-walking">Walking Dinner</a>
+          <a href="wijn.html" data-i18n="nav-cooking">Cooking Experiences</a>
+        </div>
+      </div>
+      <a href="request.html" class="active" data-i18n="nav-request">Aanvragen</a>
+      <div class="lang-switch" onclick="toggleLang()">
+        <span class="ls-nl ls-active">NL</span>
+        <span class="ls-en">EN</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container request-page">
+    <div class="request-card">
+      <div class="request-card-header">
+        <div class="request-card-icon">🍽️</div>
+        <h1 data-i18n="req-heading">Aanvraag indienen</h1>
+        <p data-i18n="req-sub">Vul het formulier in en ik neem zo snel mogelijk contact met je op.</p>
+      </div>
+
+      <form id="requestForm" class="request-form">
+
+        <!-- Dienst kiezen -->
+        <div class="form-section-label" data-i18n="req-pick">Kies een dienst</div>
+        <div class="service-picker">
+
+          <input type="radio" name="dienst" id="s-zakelijk" value="Business Dining">
+          <label class="service-card" for="s-zakelijk">
+            <span class="sc-icon">💼</span>
+            <span class="sc-name">Business<br>Dining</span>
+          </label>
+
+          <input type="radio" name="dienst" id="s-familie" value="Home Cooking">
+          <label class="service-card" for="s-familie">
+            <span class="sc-icon">🏡</span>
+            <span class="sc-name">Home<br>Cooking</span>
+          </label>
+
+          <input type="radio" name="dienst" id="s-thema" value="Celebrations">
+          <label class="service-card" for="s-thema">
+            <span class="sc-icon">🎉</span>
+            <span class="sc-name">Celebrations</span>
+          </label>
+
+          <input type="radio" name="dienst" id="s-walking" value="Walking Dinner">
+          <label class="service-card" for="s-walking">
+            <span class="sc-icon">🚶</span>
+            <span class="sc-name">Walking<br>Dinner</span>
+          </label>
+
+          <input type="radio" name="dienst" id="s-wijn" value="Cooking Experiences">
+          <label class="service-card" for="s-wijn">
+            <span class="sc-icon">👨‍🍳</span>
+            <span class="sc-name">Cooking<br>Experiences</span>
+          </label>
+
+        </div>
+
+        <!-- Wijn arrangement -->
+        <div class="form-section-label">Wijn Arrangement</div>
+        <div style="border:1.5px solid rgba(212,175,55,0.35);border-radius:14px;padding:1.5rem 2rem;background:#fdfaf5;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.8rem;">🍷</span>
+            <div>
+              <div style="font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a84c;font-weight:700;">Wijn Arrangement</div>
+              <div style="font-size:.9rem;color:#7a7a7a;margin-top:.2rem;">Voeg een wijnselectie toe aan uw diner</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.6rem;">
+            <input type="hidden" name="wijn" id="wijn-value" value="">
+            <button type="button" id="btn-wijn-ja" onclick="selectWijn('Ja')" style="padding:.5rem 1.4rem;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;font-weight:700;font-size:.9rem;background:#fafafa;color:#333;transition:all .2s;">Ja</button>
+            <button type="button" id="btn-wijn-nee" onclick="selectWijn('Nee')" style="padding:.5rem 1.4rem;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;font-weight:700;font-size:.9rem;background:#fafafa;color:#333;transition:all .2s;">Nee</button>
+          </div>
+        </div>
+
+        <!-- Gegevens -->
+        <div class="form-section-label" data-i18n="req-sec-personal">Jouw gegevens</div>
+        <div class="field-grid">
+          <div class="form-group">
+            <label for="name" data-i18n="req-name-label">Naam <span class="required">*</span></label>
+            <input type="text" name="name" id="name" placeholder="Jouw volledige naam" data-i18n-placeholder="req-name-ph" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" data-i18n="req-phone-label">Telefoonnummer</label>
+            <input type="tel" name="phone" id="phone" placeholder="Bijv. 06 12345678" data-i18n-placeholder="req-phone-ph">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" data-i18n="req-email-label">E-mailadres <span class="required">*</span></label>
+          <input type="email" name="email" id="email" placeholder="jouw@email.nl" data-i18n-placeholder="req-email-ph" required>
+        </div>
+
+        <!-- Evenement -->
+        <div class="form-section-label" data-i18n="req-sec-event">Over het evenement</div>
+        <div class="field-grid">
+          <div class="form-group">
+            <label for="guests" data-i18n="req-guests-label">Aantal gasten <span class="required">*</span></label>
+            <input type="number" name="guests" id="guests" min="1" placeholder="Bijv. 20" data-i18n-placeholder="req-guests-ph" required>
+          </div>
+          <div class="form-group">
+            <label for="date" data-i18n="req-date-label">Gewenste datum</label>
+            <input type="date" name="date" id="date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location" data-i18n="req-location-label">Locatie (adres / stad)</label>
+          <input type="text" name="location" id="location" placeholder="Bijv. Amsterdam" data-i18n-placeholder="req-location-ph">
+        </div>
+
+        <!-- Extra info -->
+        <div class="form-section-label" data-i18n="req-sec-extra">Extra informatie</div>
+        <div class="form-group">
+          <label for="description" data-i18n="req-desc-label">Beschrijving &amp; eventuele dieetwensen <span class="required">*</span></label>
+          <textarea name="description" id="description" rows="5" placeholder="Vertel meer over jouw evenement, dieetwensen of speciale verzoeken..." data-i18n-placeholder="req-desc-ph" required></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit" data-i18n="req-submit">Verstuur aanvraag →</button>
+        <p id="message" class="message" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+
+
+  <script src="lang.js"></script>
+  <script>
+    function selectWijn(val) {
+      document.getElementById('wijn-value').value = val;
+      const ja  = document.getElementById('btn-wijn-ja');
+      const nee = document.getElementById('btn-wijn-nee');
+      ja.style.background    = val === 'Ja'  ? '#111' : '#fafafa';
+      ja.style.color         = val === 'Ja'  ? '#d4af37' : '#333';
+      ja.style.borderColor   = val === 'Ja'  ? '#d4af37' : '#ddd';
+      nee.style.background   = val === 'Nee' ? '#111' : '#fafafa';
+      nee.style.color        = val === 'Nee' ? '#d4af37' : '#333';
+      nee.style.borderColor  = val === 'Nee' ? '#d4af37' : '#ddd';
+    }
+
+    document.getElementById('requestForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const name   = document.getElementById('name').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const guests = document.getElementById('guests').value;
+      const desc   = document.getElementById('description').value.trim();
+      const dienst = document.querySelector('input[name="dienst"]:checked');
+      const msg    = document.getElementById('message');
+
+      const lang = localStorage.getItem('lang') || 'nl';
+      if(!name || !email || !guests || !desc){
+        msg.textContent = TRANSLATIONS[lang]?.['req-error-fields'] || 'Vul alstublieft alle verplichte velden in.';
+        return;
+      }
+      if(!dienst){
+        msg.textContent = TRANSLATIONS[lang]?.['req-error-service'] || 'Kies alstublieft een dienst.';
+        return;
+      }
+
+      const btn = document.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Versturen…';
+      msg.textContent = '';
+
+      try {
+        const formData = new FormData(this);
+        const res = await fetch('https://formspree.io/f/mwvaqryv', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if(res.ok){
+          window.location.href = 'bedankt.html';
+        } else {
+          msg.textContent = 'Er is iets misgegaan. Probeer het opnieuw of mail ons direct.';
+          btn.disabled = false;
+          btn.textContent = 'Verstuur aanvraag →';
+        }
+      } catch(err) {
+        msg.textContent = 'Geen verbinding. Controleer je internet en probeer opnieuw.';
+        btn.disabled = false;
+        btn.textContent = 'Verstuur aanvraag →';
+      }
+    });
+  </script>
+</body>
+</html>
